@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Symbolic Link
 set -u
 DOT_DIRECTORY="${HOME}/dotfiles"
 DOT_CONFIG_DIRECTORY=".config"
@@ -22,3 +23,39 @@ for file in `\find . -maxdepth 8 -type f`; do
 done
 
 echo "linked dotfiles complete!"
+
+#Install
+sudo apt install vim
+sudo apt install git
+
+#Install tmux
+sudo apt install tmux
+sudo gem install rubygems-update
+sudo update_rubygems
+sudo gem install tmuxinator
+
+#Install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+#Install tex
+sudo apt-get install texlive-full
+sudo apt-get install latexmk
+
+#Install tig
+sudo apt-get install libncurses5-dev 
+sudo apt-get install automake
+cd ${HOME}
+git clone git://github.com/jonas/tig.git
+cd tig
+./autogen.sh
+./configure --without-ncurses #For Japanese
+make
+sudo make install
+cd ${HOME}
+rm -rf tig
+
+#Mozc
+sudo apt-get install ibus-mozc
+killall ibus-daemon
+ibus-daemon -d -x &
