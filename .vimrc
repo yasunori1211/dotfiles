@@ -8,15 +8,10 @@ call plug#begin('~/.vim/plugged')
  Plug 'edkolev/tmuxline.vim'
  Plug 'tpope/vim-surround'
  Plug 'mbbill/undotree'
- Plug 'Xuyuanp/nerdtree-git-plugin'    " doesn't work (2019/4/14)
  Plug 'airblade/vim-gitgutter'
+ Plug 'Xuyuanp/nerdtree-git-plugin'    " doesn't work (2019/4/14)
 
  call plug#end()
-
-nmap <C-K> <Plug>(caw:hatpos:toggle)
-vmap <C-K> <Plug>(caw:hatpos:toggle)
-nmap <C-I> <Plug>(caw:dollarpos:toggle)
-vmap <C-I> <Plug>(caw:dollarpos:toggle)
 
 filetype plugin indent on
 syntax enable
@@ -108,23 +103,27 @@ set fileformats=unix,dos,mac
  set clipboard=unnamed,autoselect
 
 
-"let s:hooks = neobundle#get_hooks("nerdtree")
-"function! s:hooks.on_source(bundle)
-    " 隠しファイルをデフォルトで表示させる
-    "let g:NERDTreeShowHidden = 1
-    " ブックマークを最初から表示
-    "let g:NERDTreeShowBookmarks=1
-    " 以下のファイルは vim からは見たくない
-    "let NERDTreeIgnore = ['.[oa]$', '.cm[aiox]$', '.cmxa$', '.(aux|bbl|blg|dvi|log)$', '.(tgz|gz|zip)$', 'Icon' ]
-    " book mark file
-    "let g:NERDTreeBookmarksFile=$DROPBOX . '/lib/vim/user/nerdtree-bookmarks'
-    " NERDTreeでルートを変更したらchdirする
-    "let g:NERDTreeChDirMode = 2
+ " *** Plugin settings *** 
+ 
+ " NERDTree settings
+ " 隠しファイルをデフォルトで表示させる
+ let g:NERDTreeShowHidden = 1
+ " ブックマークを最初から表示
+ let g:NERDTreeShowBookmarks=1
+ " 以下のファイルは vim からは見たくない
+ let NERDTreeIgnore = ['.[oa]$', '.cm[aiox]$', '.cmxa$', '.(aux|bbl|blg|dvi|log)$', '.(tgz|gz|zip)$', 'Icon' ]
+ " book mark file
+ let g:NERDTreeBookmarksFile=$DROPBOX . '/lib/vim/user/nerdtree-bookmarks'
+ " NERDTreeでルートを変更したらchdirする
+ let g:NERDTreeChDirMode = 2
+ " Type <C-e> to launch
+ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
-   " Type <C-e> to launch
-    nnoremap <silent><C-e> :NERDTreeToggle<CR>
-"endfunction
-"unlet s:hooks
+" caw.vim settings
+nmap <C-K> <Plug>(caw:hatpos:toggle)
+vmap <C-K> <Plug>(caw:hatpos:toggle)
+nmap <C-I> <Plug>(caw:dollarpos:toggle)
+vmap <C-I> <Plug>(caw:dollarpos:toggle)
 
 " vim-airline settings
 let g:airline_powerline_fonts = 1
@@ -133,15 +132,6 @@ set laststatus=2
 let g:airline_theme = 'bubblegum'
 
 " tmuxlive.vim settings
-" let g:tmuxline_preset = {
-"  \'a'    : '#S',
-"  \'c'    : ['#(whoami)', '#(uptime | cud -d " " -f 1,2,3)'],
-"  \'win'  : ['#I', '#W'],
-"  \'cwin' : ['#I', '#W', '#F'],
-"  \'x'    : '#(date)',
-"  \'y'    : ['%R', '%a', '%Y'],
-"  \'z'    : '#H'}
-" let g:tmuxline_theme = 'papercolor'
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'c'    : ['#(whoami)'],
@@ -152,3 +142,9 @@ let g:tmuxline_preset = {
       \'z'    : '#H',
       \'options' : {'status-justify':'left'}}
 let g:tmuxline_theme = 'papercolor'
+
+" undotree settings
+nnoremap <F5> :UndotreeToggle<cr>
+
+" vim-gitgutter settings
+set updatetime=100
