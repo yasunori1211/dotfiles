@@ -9,6 +9,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-surround'
  Plug 'mbbill/undotree'
  Plug 'airblade/vim-gitgutter'
+ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+ Plug 'junegunn/fzf.vim'
  Plug 'Xuyuanp/nerdtree-git-plugin'    " doesn't work (2019/4/14)
 
  call plug#end()

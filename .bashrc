@@ -129,3 +129,5 @@ alias notePush='cd /home/aisl/Documents/research_notes/ && git add daily_note_20
 export EDITOR='vim'
 
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/aisl/catkin_ws/src/ORB_SLAM2/Examples/ROS
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
