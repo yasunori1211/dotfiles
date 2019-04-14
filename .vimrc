@@ -6,7 +6,10 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'edkolev/tmuxline.vim'
- " Plug 'shougo/neocomplete.vim'
+ Plug 'tpope/vim-surround'
+ Plug 'mbbill/undotree'
+ Plug 'Xuyuanp/nerdtree-git-plugin'    " doesn't work (2019/4/14)
+ Plug 'airblade/vim-gitgutter'
 
  call plug#end()
 
