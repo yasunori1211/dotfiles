@@ -59,3 +59,16 @@ rm -rf tig
 sudo apt-get install ibus-mozc
 killall ibus-daemon
 ibus-daemon -d -x &
+
+# Install powerline fonts for vim-airline
+## Change terminal fonts to powerline fonts
+## Fonts "DejaVu Sans Mono for Powerline Book"
+cd @{HOME}
+git clone git@github.com:powerline/fonts.git
+cd fonts
+./install.sh
+cd ..
+rm -rf fonts
+
+# Tmux Plugin Manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 source /opt/ros/kinetic/setup.bash
-source /home/aisl/catkin_ws/devel/setup.bash
+source /home/kawamata/catkin_ws/devel/setup.bash
 
 alias cm='cd ~/catkin_ws && catkin_make'
 alias cw='cd ~/catkin_ws'

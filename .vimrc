@@ -3,6 +3,10 @@ call plug#begin('~/.vim/plugged')
  Plug 'scrooloose/nerdtree'
  Plug 'tyru/caw.vim'
  Plug 'tpope/vim-fugitive'
+ Plug 'vim-airline/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
+ Plug 'edkolev/tmuxline.vim'
+ " Plug 'shougo/neocomplete.vim'
 
  call plug#end()
 
@@ -119,3 +123,29 @@ set fileformats=unix,dos,mac
 "endfunction
 "unlet s:hooks
 
+" vim-airline settings
+let g:airline_powerline_fonts = 1
+set laststatus=2
+" let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'bubblegum'
+
+" tmuxlive.vim settings
+" let g:tmuxline_preset = {
+"  \'a'    : '#S',
+"  \'c'    : ['#(whoami)', '#(uptime | cud -d " " -f 1,2,3)'],
+"  \'win'  : ['#I', '#W'],
+"  \'cwin' : ['#I', '#W', '#F'],
+"  \'x'    : '#(date)',
+"  \'y'    : ['%R', '%a', '%Y'],
+"  \'z'    : '#H'}
+" let g:tmuxline_theme = 'papercolor'
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'c'    : ['#(whoami)'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'x'    : ['#{battery_percentage} #{battery_icon}', '#{cpu_percentage} #{cpu_icon}'],
+      \'y'    : ['%a', '%R'],
+      \'z'    : '#H',
+      \'options' : {'status-justify':'left'}}
+let g:tmuxline_theme = 'papercolor'
