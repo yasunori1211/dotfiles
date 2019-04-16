@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 source /opt/ros/kinetic/setup.bash
-source /home/kawamata/catkin_ws/devel/setup.bash
+source $HOME/catkin_ws/devel/setup.bash
 
 alias cm='cd ~/catkin_ws && catkin_make'
 alias cw='cd ~/catkin_ws'
@@ -124,10 +124,10 @@ alias cw='cd ~/catkin_ws'
 #export ROS_HOSTNAME=133.15.23.67
 
 alias processing='sh /opt/processing/processing-3.4/processing'
-alias notePush='cd /home/aisl/Documents/research_notes/ && git add daily_note_2018.asciidoc && git commit -m "Update note" && git push origin master'
+alias notePush='cd $HOME/Documents/research_notes/ && git add daily_note_2018.asciidoc && git commit -m "Update note" && git push origin master'
 
 export EDITOR='vim'
 
-export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/aisl/catkin_ws/src/ORB_SLAM2/Examples/ROS
+export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:$HOME/catkin_ws/src/ORB_SLAM2/Examples/ROS
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
