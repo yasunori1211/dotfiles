@@ -13,6 +13,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'junegunn/fzf.vim'
  Plug 'Shougo/neocomplcache'
  Plug 'Xuyuanp/nerdtree-git-plugin'    " doesn't work (2019/4/14)
+ Plug 'godlygeek/tabular'
+ Plug 'plasticboy/vim-markdown'
+ Plug 'previm/previm'
 
  call plug#end()
 
@@ -181,3 +184,11 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" previm settings
+let g:previm_open_cmd = 'google-chrome'
+" let g:previm_open_cmd = 'open -a Firefox'
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
