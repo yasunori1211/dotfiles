@@ -130,7 +130,6 @@ vmap <C-I> <Plug>(caw:dollarpos:toggle)
 " vim-airline settings
 let g:airline_powerline_fonts = 1
 set laststatus=2
-" let g:airline_theme = 'bubblegum'
 let g:airline_theme = 'bubblegum'
 
 " tmuxlive.vim settings

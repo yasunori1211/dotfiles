@@ -45,14 +45,14 @@ sudo apt-get install latexmk
 #Install tig
 sudo apt-get install libncurses5-dev 
 sudo apt-get install automake
-cd ${HOME}
+cd $HOME
 git clone git://github.com/jonas/tig.git
 cd tig
 ./autogen.sh
 ./configure --without-ncurses #For Japanese
 make
 sudo make install
-cd ${HOME}
+cd $HOME
 rm -rf tig
 
 #Mozc
@@ -63,12 +63,17 @@ ibus-daemon -d -x &
 # Install powerline fonts for vim-airline
 ## Change terminal fonts to powerline fonts
 ## Fonts "DejaVu Sans Mono for Powerline Book"
-cd @{HOME}
-git clone git@github.com:powerline/fonts.git
+cd $HOME
+git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
 
 # Tmux Plugin Manager
+## To install tmux plugins, Prefix + I on tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# tmuxline.vim
+## Execute ":TmuxLineSnapshot ~/.tmux/tmuxline.conf" and reload .tmux.conf
+## For detail, read tmuxline.vim github page
