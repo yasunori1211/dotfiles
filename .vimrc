@@ -16,6 +16,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'godlygeek/tabular'
  Plug 'plasticboy/vim-markdown'
  Plug 'previm/previm'
+ Plug 'regedarek/ZoomWin'
+ " Plug 'justmao945/vim-clang'
+ " Plug 'zxqfl/tabnine-vim'    " very heavy, much memory need
 
  call plug#end()
 
@@ -163,8 +166,8 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-            \ 'default' : ''
-            \ }
+          \ 'default' : ''
+          \ }
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
@@ -191,3 +194,10 @@ augroup PrevimSettings
     autocmd!
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
+
+" " vim-clang settings
+" let g:clang_c_options = '-std=c11'
+" let g:clang_cpp_options = '-std=c++11 --pedantic-errors'
+" let g:clang_format_auto = 1
+" let g:clang_format_style = 'Google'
+" let g:clang_check_syntax_auto = 1

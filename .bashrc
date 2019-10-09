@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[31m\]$(__git_ps1 "(%s)")\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -131,3 +131,5 @@ export EDITOR='vim'
 export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:$HOME/catkin_ws/src/ORB_SLAM2/Examples/ROS
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source ~/.git-prompt.sh

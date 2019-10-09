@@ -77,3 +77,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # tmuxline.vim
 ## Execute ":TmuxLineSnapshot ~/.tmux/tmuxline.conf" and reload .tmux.conf
 ## For detail, read tmuxline.vim github page
+
+# .git-prompt.sh
+cp ${DOT_DIRECTORY}/.git-prompt.sh ${HOME}/
