@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'plasticboy/vim-markdown'
  Plug 'previm/previm'
  Plug 'regedarek/ZoomWin'
+ Plug 'habamax/vim-asciidoctor'
  " Plug 'justmao945/vim-clang'
  " Plug 'zxqfl/tabnine-vim'    " very heavy, much memory need
 
@@ -201,3 +202,26 @@ augroup END
 " let g:clang_format_auto = 1
 " let g:clang_format_style = 'Google'
 " let g:clang_check_syntax_auto = 1
+"
+
+" vim-asciidoctor settings
+" What to use for HTML, default `asciidoctor`.
+let g:asciidoctor_executable = 'asciidoctor'
+" What extensions to use for HTML, default `[]`.
+let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge']
+" Path to the custom css
+let g:asciidoctor_css_path = '~/docs/AsciiDocThemes'
+" Custom css name to use instead of built-in
+let g:asciidoctor_css = 'haba-asciidoctor.css'
+" What to use for PDF, default `asciidoctor-pdf`.
+let g:asciidoctor_pdf_executable = 'asciidoctor-pdf'
+" What extensions to use for PDF, default `[]`.
+let g:asciidoctor_pdf_extensions = ['asciidoctor-diagram']
+" Path to PDF themes, default `''`.
+let g:asciidoctor_pdf_themes_path = '~/docs/AsciiDocThemes'
+" Path to PDF fonts, default `''`.
+let g:asciidoctor_pdf_fonts_path = '~/docs/AsciiDocThemes/fonts'
+" Fold sections, default `0`.
+let g:asciidoctor_folding = 1
+" Fold options, default `0`.
+let g:asciidoctor_fold_options = 1

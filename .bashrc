@@ -133,3 +133,19 @@ export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:$HOME/catkin_ws/src/ORB_SLAM2/Exampl
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 source ~/.git-prompt.sh
+
+function pdfmin()
+{
+    local cnt=0
+    for i in $@; do
+        gs -sDEVICE=pdfwrite \
+           -dCompatibilityLevel=1.4 \
+           -dPDFSETTINGS=/ebook \
+           -dNOPAUSE -dQUIET -dBATCH \
+           -dColorImageResolution=1000 \
+            -dPrinted=false \
+           -sOutputFile=${i%%.*}.min.pdf ${i} &
+        (( (cnt += 1) % 4 == 0 )) && wait
+    done
+    wait && return 0
+}

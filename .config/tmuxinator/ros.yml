@@ -28,3 +28,5 @@ windows:
             - 
             -
     - Git: 
+    - Memo:
+        - vim ~/Documents/research_notes/daily_note_2019.asciidoc
