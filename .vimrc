@@ -1,25 +1,43 @@
 call plug#begin('~/.vim/plugged')
 
  Plug 'scrooloose/nerdtree'
+ Plug 'Xuyuanp/nerdtree-git-plugin'    " doesn't work (2019/4/14)
+
+ " Modified plugin
  Plug 'tyru/caw.vim'
- Plug 'tpope/vim-fugitive'
+ Plug 'tpope/vim-surround'
+
+ " Programing Launguage plugin
+ Plug 'othree/html5.vim'
+ Plug 'mattn/emmet-vim'
+ Plug 'pangloss/vim-javascript'
+ Plug 'StanAngeloff/php.vim'
+ Plug 'captbaritone/better-indent-support-for-php-with-html'
+ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+ " Git plugin
+ Plug 'kmnk/vim-unite-giti'
+ Plug 'airblade/vim-gitgutter'
+
+ Plug 'Shougo/deoplete.nvim'
+ Plug 'roxma/nvim-yarp'    " For using deoplete
+ Plug 'roxma/vim-hug-neovim-rpc'    " For using deoplete
+
+ " 
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'edkolev/tmuxline.vim'
- Plug 'tpope/vim-surround'
- Plug 'mbbill/undotree'
- Plug 'airblade/vim-gitgutter'
+
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
- Plug 'Shougo/neocomplcache'
- Plug 'Xuyuanp/nerdtree-git-plugin'    " doesn't work (2019/4/14)
+ Plug 'regedarek/ZoomWin'
+
+ Plug 'tpope/vim-fugitive'
+
  Plug 'godlygeek/tabular'
  Plug 'plasticboy/vim-markdown'
  Plug 'previm/previm'
- Plug 'regedarek/ZoomWin'
  Plug 'habamax/vim-asciidoctor'
- " Plug 'justmao945/vim-clang'
- " Plug 'zxqfl/tabnine-vim'    " very heavy, much memory need
 
  call plug#end()
 
@@ -41,7 +59,7 @@ set fileformats=unix,dos,mac
  hi Pmenu ctermbg=black ctermfg=white guifg=#000000 guibg=#999999
  hi PmenuSel ctermbg=blue ctermfg=white
  hi PmenuSbar ctermbg=0 ctermfg=9
- hi PmenuSbar ctermbg=255 ctermfg=0 guifg=#000000 guibg=#FFFFF))
+ hi PmenuSbar ctermbg=255 ctermfg=0 guifg=#000000 guibg=#FFFFFF
 " "文字コードをUFT-8に設定
  set fenc=utf-8
 " " バックアップファイルを作らない
@@ -109,7 +127,7 @@ set fileformats=unix,dos,mac
  set clipboard=unnamed,autoselect
 
 
- " *** Plugin settings *** 
+ """ Plugin settings """
  
  " NERDTree settings
  " 隠しファイルをデフォルトで表示させる
@@ -136,7 +154,7 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline_theme = 'bubblegum'
 
-" tmuxlive.vim settings
+" tmuxline.vim settings
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'c'    : ['#(whoami)'],
@@ -154,40 +172,6 @@ nnoremap <F5> :UndotreeToggle<cr>
 " vim-gitgutter settings
 set updatetime=100
 
-" neocomplcache settings
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-          \ 'default' : ''
-          \ }
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
 " previm settings
 let g:previm_open_cmd = 'google-chrome'
 " let g:previm_open_cmd = 'open -a Firefox'
@@ -195,14 +179,6 @@ augroup PrevimSettings
     autocmd!
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
-
-" " vim-clang settings
-" let g:clang_c_options = '-std=c11'
-" let g:clang_cpp_options = '-std=c++11 --pedantic-errors'
-" let g:clang_format_auto = 1
-" let g:clang_format_style = 'Google'
-" let g:clang_check_syntax_auto = 1
-"
 
 " vim-asciidoctor settings
 " What to use for HTML, default `asciidoctor`.
@@ -225,3 +201,16 @@ let g:asciidoctor_pdf_fonts_path = '~/docs/AsciiDocThemes/fonts'
 let g:asciidoctor_folding = 1
 " Fold options, default `0`.
 let g:asciidoctor_fold_options = 1
+
+" vim-go settings
+let g:go_fmt_command = "goimports"
+" let g:go_metalinter_autosave = 1
+
+" deoplete.nvim settings
+let deoplete#enable_at_startup = 1
+
+" php.vim settings
+let g:php_baselib       = 1
+let g:php_htmlInStrings = 1
+let g:php_noShortTags   = 1
+let g:php_sql_query     = 1
